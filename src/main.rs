@@ -1,24 +1,11 @@
-use chord::{play_all, ChordBlocked, ChordBroken, ChordBuilder, Note, Playable};
-use egui::{vec2, Color32, Margin, Sense, Stroke, Vec2};
-use hsv::hsv_to_rgb;
+use chord::ChordBroken;
 use rodio::source::{SineWave, Source};
-use rodio::{Decoder, OutputStream, OutputStreamHandle, Sink};
-use rustysynth::{Preset, SoundFont};
-use sfont::load_soundfont;
-use std::fs::read_dir;
-use std::sync::Arc;
+use rodio::{OutputStreamHandle, Sink};
 use std::time::Duration;
 mod app;
-mod tones;
-use chord::ChordType;
-use enum_iterator::all;
-use tones::{
-    freq_from_note, major_scale, minor_scale_har, minor_scale_mel, raise_half, A3, A4, ASH3, ASH5,
-    B3, B4, BFL3, BFL4, C3, C4, C5, CSH3, CSH4, CSH5, D3, D4, E3, E4, EFL4, F3, F4, F5, G2, G4,
-    GSH3, GSH4,
-};
 mod chord;
 mod sfont;
+mod tones;
 use crate::app::MusicApp;
 use eframe::egui;
 

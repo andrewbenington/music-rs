@@ -1,10 +1,7 @@
 use crate::sfont::BankInstrument;
 use enum_iterator::{all, cardinality, Sequence};
 use rand;
-use rodio::{
-    source::{Mix, SineWave, TakeDuration},
-    OutputStream, Sink, Source,
-};
+use rodio::{source::TakeDuration, Sink, Source};
 use rustysynth::SoundFont;
 use std::{collections::VecDeque, fmt::Display, sync::Arc, time::Duration};
 

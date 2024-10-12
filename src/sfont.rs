@@ -1,8 +1,6 @@
-use rodio::{OutputStream, OutputStreamHandle, Source};
+use rodio::Source;
 use rustysynth::{Preset, SoundFont, Synthesizer, SynthesizerSettings};
-use std::collections::HashMap;
 use std::fs::File;
-use std::io::Cursor;
 use std::sync::Arc;
 use std::time::Duration;
 
@@ -24,19 +22,6 @@ pub fn load_sf_source(
         ),
         None => println!("no instrument"),
     }
-
-    // println!("Instruments");
-    // for (i, instr) in soundfont.get_instruments().iter().enumerate() {
-    //     println!("{}. {}", i, instr.get_name())
-    // }
-    // println!("Sample Headers");
-    // for (i, sample) in sound_font.get_sample_headers().iter().enumerate() {
-    //     println!("{}. {}", i, sample.get_name())
-    // }
-    // println!("Presets");
-    // for (i, sample) in soundfont.get_presets().iter().enumerate() {
-    //     println!("{}. {}", i, sample.get_name())
-    // }
 
     let settings = SynthesizerSettings::new(44100);
     let mut synthesizer = Synthesizer::new(&soundfont, &settings).unwrap();
@@ -69,10 +54,6 @@ pub fn load_sf_source(
 fn frequency_to_midi_key(frequency: f32) -> i32 {
     let midi_note = 69.0 + 12.0 * (frequency / 440.0).log2();
     midi_note.round() as i32
-}
-
-fn set_instrument(synthesizer: &mut Synthesizer, channel: i32, program: i32) {
-    synthesizer.process_midi_message(channel, 0xcc, program, 0);
 }
 
 #[derive(PartialEq, Clone)]
