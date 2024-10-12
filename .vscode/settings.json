@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.removeUnusedImports": true
+  },
+  "editor.inlayHints.enabled": "offUnlessPressed"
+}
